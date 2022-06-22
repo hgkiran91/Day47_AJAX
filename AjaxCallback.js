@@ -5,7 +5,7 @@ function showTime(){
     return date.getHours()+ "hrs: "+date.getMinutes()+"mins: "+date.getSeconds()+"secs"; 
 }
 
-function makPromiseCall(methodType, url, async=true, data=null){
+function makePromiseCall(methodType, url, async=true, data=null){
     return new Promise(function (resolve, reject) {
         let xhr=new XMLHttpRequest();
         xhr.onreadystatechange = function(){
@@ -34,24 +34,24 @@ function makPromiseCall(methodType, url, async=true, data=null){
     });
 }
 
-const getURL="http://localhost:3000/employees/5";
-makPromiseCall("GET", getURL, true)
+const getURL="http://localhost:3000/employees/";
+makePromiseCall("GET", getURL, true)
     .then(responseText => {
     console.log("Get User Data at: "+ showTime() + "data: "+ responseText);
     })
     .catch(error => console.log("Get Error Status: " + JSON.stringify(error)));
 
-const deleteURL="http://localhost:49856/employees/4";
-makPromiseCall("DELETE", deleteURL, false)
+const deleteURL="http://localhost:3000/employees/11";
+makePromiseCall("DELETE", deleteURL, false)
     .then(responseText => {
     console.log("User Deleted Data at: "+ showTime() + "data: "+ responseText);
     })
     .catch(error => console.log("Delete Error Status: " + JSON.stringify(error)));
 
-const postURL="http://localhost:3000/employees";
-const emplData={"name": "Harry", "salary": "5000"};
-makPromiseCall("POST", postURL, true, emplData)
-    .then(responseText => {
-    console.log("User Added Data at: "+ showTime() + "data: "+ responseText);
-    })
-    .catch(error => console.log("Post Error Status: " + JSON.stringify(error)));
+// const postURL="http://localhost:3000/employees";
+// const emplData={"name": "Harry", "salary": "5000"};
+// makePromiseCall("POST", postURL, true, emplData)
+//     .then(responseText => {
+//     console.log("User Added Data at: "+ showTime() + "data: "+ responseText);
+//     })
+//     .catch(error => console.log("Post Error Status: " + JSON.stringify(error)));
